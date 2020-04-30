@@ -1,9 +1,36 @@
-import React from 'react'
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const AddUserForm = () => {
-    return(
-        <h1>Formulario</h1>
-    )
-}
+const AddUserForm = (props) => {
+  const { register, errors, handleSubmit } = useForm();
 
-export default AddUserForm
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label>Name</label>
+      <input
+        type="text"
+        name="name"
+        ref={register({
+          required: { value: true, message: "field required" },
+        })}
+      />
+      <div>{errors?.name?.message}</div>
+      <label>Username</label>
+      <input
+        type="text"
+        name="username"
+        ref={register({
+          required: { value: true, message: "field required" },
+        })}
+      />
+      <div>{errors?.username?.message}</div>
+      <button>Add new user</button>
+    </form>
+  );
+};
+
+export default AddUserForm;
