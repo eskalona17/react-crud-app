@@ -4,8 +4,12 @@ import { useForm } from "react-hook-form";
 const AddUserForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (data, e) => {
+    console.log(data)
+
+    props.addUser(data)
+    //clean fields
+    e.target.reset();
   };
 
   return (

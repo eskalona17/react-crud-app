@@ -23,6 +23,11 @@ function App() {
     ])
   }
 
+  //detele users
+  const deleteUser = id => {
+    setUsers(users.filter(user => user.id !== id))
+  }
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
@@ -33,7 +38,7 @@ function App() {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users}/>
+          <UserTable users={users} deleteUser={deleteUser}/>
         </div>
       </div>
     </div>
